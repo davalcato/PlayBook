@@ -12,6 +12,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // Lazy var to access self within closure block
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        // scroll direction 
+        layout.scrollDirection = .horizontal
+        
         let cv = UICollectionView(
         frame: .zero,
         collectionViewLayout: layout)
@@ -48,9 +51,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
         
-        cell.backgroundColor = .black
+        cell.backgroundColor = .white
         
         return cell
+    }
+    
+    // Make cell blocks bigger
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: view.frame.height)
     }
 
 }
