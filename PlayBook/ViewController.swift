@@ -8,12 +8,22 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    // Add collectionview inside viewController
+    let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let cv = UICollectionView(
+        frame: .zero,
+        collectionViewLayout: layout)
+        cv.backgroundColor = .red
+    return cv
+    
+}()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        view.addSubview(collectionView)
+        collectionView.frame = view.frame
     }
-
 
 }
 
