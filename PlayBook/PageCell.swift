@@ -16,8 +16,25 @@ class PageCell: UICollectionViewCell {
         setupViews()
     }
     
+    // View component inside the cell
+    let imageView: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFill
+        iv.backgroundColor = .yellow
+        return iv
+        
+    }()
+    
     func setupViews() {
         backgroundColor = .blue
+        
+        // Entire width and height of cell 
+        addSubview(imageView)
+        imageView.anchorToTop(
+            top: topAnchor,
+            left: leftAnchor,
+            bottom: bottomAnchor,
+            right: rightAnchor)
         
     }
     
