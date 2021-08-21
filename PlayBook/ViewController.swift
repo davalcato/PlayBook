@@ -12,8 +12,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // Lazy var to access self within closure block
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        // scroll direction 
+        // scroll direction
         layout.scrollDirection = .horizontal
+        // layout line spacing 
         
         let cv = UICollectionView(
         frame: .zero,
@@ -22,6 +23,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Datasource from collectionView
         cv.dataSource = self
         cv.delegate = self
+        cv.isPagingEnabled = true
         
     return cv
 }()
@@ -41,7 +43,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             right: view.rightAnchor)
         
         // Register identifier with collectionView
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -50,8 +52,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        
-        cell.backgroundColor = .white
         
         return cell
     }
