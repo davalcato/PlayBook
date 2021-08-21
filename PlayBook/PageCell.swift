@@ -21,13 +21,13 @@ class PageCell: UICollectionViewCell {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.backgroundColor = .yellow
+        iv.image = UIImage(named: "facebook")
+        iv.clipsToBounds = true
         return iv
         
     }()
     
     func setupViews() {
-        backgroundColor = .blue
-        
         // Entire width and height of cell 
         addSubview(imageView)
         imageView.anchorToTop(
