@@ -33,7 +33,25 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // Added Pages
     var pages: [Page] = {
-        return []
+        let firstPage = Page(
+            title: "Share all your favorite books with friends",
+            message: "Be a friend and send a book! Because now for a limited time all new books are free.",
+            imageName: "facebook")
+        
+        let secondPage = Page(
+            title: "Send from your library.",
+            message: "Tap the more menu next to any book. Choose \"Send this Book\"",
+            imageName: "page2")
+        
+        let thirdPage = Page(
+            title: "Send from the player.",
+            message: "Tap the more menu next to any book. Choose \"Send this Book\"",
+            imageName: "page3")
+        
+        
+        
+        
+        return [firstPage, secondPage, thirdPage]
     }()
     
     
