@@ -24,17 +24,37 @@ class PageCell: UICollectionViewCell {
         iv.image = UIImage(named: "facebook")
         iv.clipsToBounds = true
         return iv
-        
+    }()
+    // Text view
+    let textView: UITextView = {
+        let tv = UITextView()
+        tv.text = "SAMPLE TEXT FOR NOW"
+        tv.isEditable = false
+        return tv
     }()
     
     func setupViews() {
         // Entire width and height of cell 
         addSubview(imageView)
+        // Add text reference
+        addSubview(textView)
         imageView.anchorToTop(
             top: topAnchor,
             left: leftAnchor,
             bottom: bottomAnchor,
             right: rightAnchor)
+        
+        // Placed text veiw
+        textView.anchorToTop(
+            top: nil,
+            left: leftAnchor,
+            bottom: bottomAnchor,
+            right: rightAnchor)
+        
+        // Height Anchor
+        textView.heightAnchor.constraint(
+            equalTo: heightAnchor,
+            multiplier: 0.3).isActive = true
         
     }
     
