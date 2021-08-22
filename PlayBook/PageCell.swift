@@ -20,8 +20,18 @@ class PageCell: UICollectionViewCell {
             //Access the page here
             imageView.image = UIImage(named: page.imageName)
             
-            // Change text on each page
-            textView.text = page.title + "\n\n" + page.message
+            // Change color text
+            let color = UIColor(white: 0.2, alpha: 1)
+            
+            // Added attributed string for text
+            let attributedText = NSMutableAttributedString(
+                string: page.title,
+                attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.medium), NSAttributedString.Key.foregroundColor: color])
+            
+            textView.attributedText = attributedText
+            
+            
+           
 
         }
         
