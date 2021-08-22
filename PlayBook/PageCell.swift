@@ -9,6 +9,24 @@ import UIKit
 
 class PageCell: UICollectionViewCell {
     
+    // Access to the each page
+    var page: Page? {
+        didSet {
+            
+            // Unwraps the optional page
+            guard let page = page else {
+                return
+            }
+            //Access the page here
+            imageView.image = UIImage(named: page.imageName)
+            
+            // Change text on each page
+            textView.text = page.title + "\n\n" + page.message
+
+        }
+        
+    }
+    
     // Override init
     override init(frame: CGRect) {
         super.init(frame: frame)
