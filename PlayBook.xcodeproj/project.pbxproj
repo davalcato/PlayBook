@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		75448DEC26D19FBD00E6D67F /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75448DEB26D19FBD00E6D67F /* PageCell.swift */; };
+		75448DEE26D2DCFF00E6D67F /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75448DED26D2DCFF00E6D67F /* Page.swift */; };
 		75739D4726D07B1E00A2AF27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75739D4626D07B1E00A2AF27 /* AppDelegate.swift */; };
 		75739D4926D07B1E00A2AF27 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75739D4826D07B1E00A2AF27 /* SceneDelegate.swift */; };
 		75739D4B26D07B1E00A2AF27 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75739D4A26D07B1E00A2AF27 /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		75448DEB26D19FBD00E6D67F /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
+		75448DED26D2DCFF00E6D67F /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		75739D4326D07B1E00A2AF27 /* PlayBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75739D4626D07B1E00A2AF27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75739D4826D07B1E00A2AF27 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				75739D4826D07B1E00A2AF27 /* SceneDelegate.swift */,
 				75739D4A26D07B1E00A2AF27 /* ViewController.swift */,
 				75448DEB26D19FBD00E6D67F /* PageCell.swift */,
+				75448DED26D2DCFF00E6D67F /* Page.swift */,
 				75739D4C26D07B1E00A2AF27 /* Main.storyboard */,
 				75739D4F26D07B2300A2AF27 /* Assets.xcassets */,
 				75739D5126D07B2300A2AF27 /* LaunchScreen.storyboard */,
@@ -262,6 +265,7 @@
 				75739D4726D07B1E00A2AF27 /* AppDelegate.swift in Sources */,
 				75448DEC26D19FBD00E6D67F /* PageCell.swift in Sources */,
 				75739D4926D07B1E00A2AF27 /* SceneDelegate.swift in Sources */,
+				75448DEE26D2DCFF00E6D67F /* Page.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

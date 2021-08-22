@@ -26,10 +26,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cv.isPagingEnabled = true
         
     return cv
-}()
+    }()
     
     // Registering cell with identifier
     let cellId = "cellId"
+    
+    // Added Pages
+    var pages: [Page] = {
+        return []
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +53,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return pages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

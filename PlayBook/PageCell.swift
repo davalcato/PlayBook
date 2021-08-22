@@ -38,10 +38,11 @@ class PageCell: UICollectionViewCell {
         addSubview(imageView)
         // Add text reference
         addSubview(textView)
+        
         imageView.anchorToTop(
             top: topAnchor,
             left: leftAnchor,
-            bottom: bottomAnchor,
+            bottom: textView.topAnchor,
             right: rightAnchor)
         
         // Placed text veiw
