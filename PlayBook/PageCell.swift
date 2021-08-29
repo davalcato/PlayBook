@@ -86,13 +86,13 @@ class PageCell: UICollectionViewCell {
         addSubview(lineSeparatorView)
         
         imageView.anchorToTop(
-            top: topAnchor,
+            topAnchor,
             left: leftAnchor,
             bottom: textView.topAnchor,
             right: rightAnchor)
         
         textView.anchorWithConstantsToTop(
-            top: nil,
+            nil,
             left: leftAnchor,
             bottom: bottomAnchor,
             right: rightAnchor,
@@ -107,7 +107,7 @@ class PageCell: UICollectionViewCell {
             multiplier: 0.3).isActive = true
         
         lineSeparatorView.anchorToTop(
-            top: nil,
+            nil,
             left: leftAnchor,
             bottom: textView.topAnchor,
             right: rightAnchor)

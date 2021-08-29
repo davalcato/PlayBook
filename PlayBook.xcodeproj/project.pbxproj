@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75287B0B26DC211F00550B86 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75287B0A26DC211F00550B86 /* Extensions.swift */; };
 		75448DEC26D19FBD00E6D67F /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75448DEB26D19FBD00E6D67F /* PageCell.swift */; };
 		75448DEE26D2DCFF00E6D67F /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75448DED26D2DCFF00E6D67F /* Page.swift */; };
 		75739D4726D07B1E00A2AF27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75739D4626D07B1E00A2AF27 /* AppDelegate.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		75287B0A26DC211F00550B86 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		75448DEB26D19FBD00E6D67F /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		75448DED26D2DCFF00E6D67F /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		75739D4326D07B1E00A2AF27 /* PlayBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +106,7 @@
 				75739D4626D07B1E00A2AF27 /* AppDelegate.swift */,
 				75739D4826D07B1E00A2AF27 /* SceneDelegate.swift */,
 				75739D4A26D07B1E00A2AF27 /* ViewController.swift */,
+				75287B0A26DC211F00550B86 /* Extensions.swift */,
 				75448DEB26D19FBD00E6D67F /* PageCell.swift */,
 				75448DED26D2DCFF00E6D67F /* Page.swift */,
 				75739D4C26D07B1E00A2AF27 /* Main.storyboard */,
@@ -262,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75739D4B26D07B1E00A2AF27 /* ViewController.swift in Sources */,
+				75287B0B26DC211F00550B86 /* Extensions.swift in Sources */,
 				75739D4726D07B1E00A2AF27 /* AppDelegate.swift in Sources */,
 				75448DEC26D19FBD00E6D67F /* PageCell.swift in Sources */,
 				75739D4926D07B1E00A2AF27 /* SceneDelegate.swift in Sources */,
