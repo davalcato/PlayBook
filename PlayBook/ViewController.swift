@@ -19,7 +19,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let cv = UICollectionView(
         frame: .zero,
         collectionViewLayout: layout)
-        cv.backgroundColor = .red
+        cv.backgroundColor = .white
         // Datasource from collectionView
         cv.dataSource = self
         cv.delegate = self
@@ -103,8 +103,13 @@ extension UIView {
     
     func anchorWithConstantsToTop(
         top: NSLayoutYAxisAnchor? = nil, left:
-        NSLayoutXAxisAnchor? = nil, bottom: NSLayoutYAxisAnchor? = nil, right:
-        NSLayoutXAxisAnchor? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0)
+        NSLayoutXAxisAnchor? = nil,
+        bottom: NSLayoutYAxisAnchor? = nil,
+        right: NSLayoutXAxisAnchor? = nil,
+        topConstant: CGFloat = 0,
+        leftConstant: CGFloat = 0,
+        bottomConstant: CGFloat = 0,
+        rightConstant: CGFloat = 0)
     {
         
         translatesAutoresizingMaskIntoConstraints = false
