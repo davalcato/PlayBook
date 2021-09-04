@@ -53,9 +53,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return [firstPage, secondPage, thirdPage]
     }()
     
-    let pageControl: UIPageControl = {
+    private let pageControl: UIPageControl = {
         let pc = UIPageControl()
         pc.pageIndicatorTintColor = .lightGray
+        pc.backgroundColor = .systemBlue
+        pc.currentPageIndicatorTintColor = UIColor(
+            red: 247/255,
+            green: 154/255,
+            blue: 154/255,
+            alpha: 1)
         pc.numberOfPages = 3
         return pc
         
@@ -63,10 +69,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.addSubview(pageControl)
         
-        pageControl.anchor(
-            top: nil,
+        _ = pageControl.anchor(top: nil,
             left: view.leftAnchor,
             bottom: view.bottomAnchor,
             right: view.rightAnchor,
@@ -89,13 +95,37 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        // get pageControl and scroll view from view's subviews
+        let pageControl = view.subviews.filter{ $0 is UIPageControl }.first! as! UIPageControl
+        let scrollView = view.subviews.filter{ $0 is UIScrollView }.first! as! UIScrollView
+        // remove all constraint from view that are tied to pagecontrol
+        let const = view.constraints.filter { $0.firstItem as? NSObject == pageControl || $0.secondItem as? NSObject == pageControl }
+        view.removeConstraints(const)
+
+        // customize pagecontroll
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        pageControl.addConstraint(pageControl.heightAnchor.constraint(equalToConstant: 35))
+        pageControl.backgroundColor = view.backgroundColor
+
+        // create constraints for pagecontrol
+        let leading = pageControl.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+        let trailing = pageControl.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        let bottom = pageControl.bottomAnchor.constraint(equalTo: scrollView.topAnchor, constant:8) // add to scrollview not view
+
+        // pagecontrol constraint to view
+        view.addConstraints([leading, trailing, bottom])
+        view.bounds.origin.y -= pageControl.bounds.maxY
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return pages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PageCell
-        
         
         let page = pages[indexPath.item]
         cell.page = page
@@ -109,6 +139,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 
 }
+
+//extension UIPageViewController {
+//
+//    var scrollView: UIScrollView? {
+//
+//        return view.subviews.filter { $0 is UIScrollView }.first as? UIScrollView
+//    }
+//}
+
 
 
 
