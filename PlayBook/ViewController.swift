@@ -52,7 +52,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         return [firstPage, secondPage, thirdPage]
     }()
-    
+    // Structure pageControler
     private let pageControl: UIPageControl = {
         let pc = UIPageControl()
         pc.pageIndicatorTintColor = .lightGray
@@ -64,12 +64,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             alpha: 1)
         pc.numberOfPages = 3
         return pc
-        
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.addSubview(collectionView)
         view.addSubview(pageControl)
         
         _ = pageControl.anchor(top: nil,
@@ -83,7 +82,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             widthConstant: 0,
             heightConstant: 30)
         
-        view.addSubview(collectionView)
         // Use autolayout instead to fix issue of view.frame
         collectionView.anchorToTop(
             view.topAnchor,
@@ -97,27 +95,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
-        // get pageControl and scroll view from view's subviews
-        let pageControl = view.subviews.filter{ $0 is UIPageControl }.first! as! UIPageControl
-        let scrollView = view.subviews.filter{ $0 is UIScrollView }.first! as! UIScrollView
-        // remove all constraint from view that are tied to pagecontrol
-        let const = view.constraints.filter { $0.firstItem as? NSObject == pageControl || $0.secondItem as? NSObject == pageControl }
-        view.removeConstraints(const)
-
-        // customize pagecontroll
-        pageControl.translatesAutoresizingMaskIntoConstraints = false
-        pageControl.addConstraint(pageControl.heightAnchor.constraint(equalToConstant: 35))
-        pageControl.backgroundColor = view.backgroundColor
-
-        // create constraints for pagecontrol
-        let leading = pageControl.leadingAnchor.constraint(equalTo: view.leadingAnchor)
-        let trailing = pageControl.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        let bottom = pageControl.bottomAnchor.constraint(equalTo: scrollView.topAnchor, constant:8) // add to scrollview not view
-
-        // pagecontrol constraint to view
-        view.addConstraints([leading, trailing, bottom])
-        view.bounds.origin.y -= pageControl.bounds.maxY
+        for view in self.view.subviews {
+            if view.isKind(of:UIScrollView.self) {
+                view.frame = UIScreen.main.bounds
+            } else if view.isKind(of:UIPageControl.self) {
+                view.backgroundColor = UIColor.clear
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
