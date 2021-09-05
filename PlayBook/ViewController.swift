@@ -53,8 +53,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         return [firstPage, secondPage, thirdPage]
     }()
-    // Structure pageControler
-    private let pageControl: UIPageControl = {
+    // Structure pageControler - Lazy var makes self accessible
+    lazy var pageControl: UIPageControl = {
         let pc = UIPageControl()
         pc.pageIndicatorTintColor = .lightGray
         pc.backgroundColor = .systemBlue
@@ -63,7 +63,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             green: 154/255,
             blue: 154/255,
             alpha: 1)
-        pc.numberOfPages = 3
+        pc.numberOfPages = self.pages.count + 1
         return pc
     }()
     
