@@ -150,8 +150,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     // Override a method to enable dot page transition
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        // Where it stops
-        print(targetContentOffset.pointee.x)
+        
+        // Convert with Int As the user slide the pages
+        let pageNumber = Int(targetContentOffset.pointee.x / view.frame.width)
+        pageControl.currentPage = pageNumber
+        
     }
     
     
