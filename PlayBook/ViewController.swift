@@ -146,9 +146,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         // Register a blank cell for the last page
         registerCells()
-        // Register identifier with collectionView
-//        collectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
+        
     }
+    // Override a method to enable dot page transition
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        // Where it stops
+        print(targetContentOffset.pointee.x)
+    }
+    
     
     fileprivate func registerCells() {
         collectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
