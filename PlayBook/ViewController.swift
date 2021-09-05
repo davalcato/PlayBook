@@ -66,10 +66,26 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return pc
     }()
     
+    // Add the skip button
+    let skipButton: UIButton = {
+        let button = UIButton(type: .system)
+        // Display button
+        button.setTitle("Skip", for: .normal)
+        button.setTitleColor(UIColor(
+            red: 247/255,
+            green: 154/255,
+            blue: 154/255,
+            alpha: 1), for: .normal)
+        return button
+        
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
         view.addSubview(pageControl)
+        view.addSubview(skipButton)
+        
         
         _ = pageControl.anchor(top: nil,
             left: view.leftAnchor,
@@ -80,7 +96,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             bottomConstant: 0,
             rightConstant: 0,
             widthConstant: 0,
-            heightConstant: 30)
+            heightConstant: 70)
+        
+        // Skip button
+        _ = skipButton.anchor(top: view.topAnchor,
+                          left: view.leftAnchor,
+                          bottom: nil,
+                          right: nil,
+                          topConstant: 0,
+                          leftConstant: 0,
+                          bottomConstant: 0,
+                          rightConstant: 0,
+                          widthConstant: 80,
+                          heightConstant: 50)
         
         // Use autolayout instead to fix issue of view.frame
         collectionView.anchorToTop(
@@ -92,7 +120,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Register identifier with collectionView
         collectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
     }
-    
+    // Puts the pageControl dots on screen
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         for view in self.view.subviews {
