@@ -80,11 +80,26 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }()
     
+    // Add the next button
+    let nextButton: UIButton = {
+        let button = UIButton(type: .system)
+        // Display button
+        button.setTitle("Next", for: .normal)
+        button.setTitleColor(UIColor(
+            red: 247/255,
+            green: 154/255,
+            blue: 154/255,
+            alpha: 1), for: .normal)
+        return button
+        
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
         view.addSubview(pageControl)
         view.addSubview(skipButton)
+        view.addSubview(nextButton)
         
         
         _ = pageControl.anchor(top: nil,
@@ -103,12 +118,23 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                           left: view.leftAnchor,
                           bottom: nil,
                           right: nil,
-                          topConstant: 0,
+                          topConstant: 26,
                           leftConstant: 0,
                           bottomConstant: 0,
                           rightConstant: 0,
-                          widthConstant: 80,
-                          heightConstant: 50)
+                          widthConstant: 90,
+                          heightConstant: 80)
+        
+        _ = nextButton.anchor(top: view.topAnchor,
+                          left: nil,
+                          bottom: nil,
+                              right: view.rightAnchor,
+                          topConstant: 26,
+                          leftConstant: 0,
+                          bottomConstant: 0,
+                          rightConstant: 0,
+                          widthConstant: 90,
+                          heightConstant: 80)
         
         // Use autolayout instead to fix issue of view.frame
         collectionView.anchorToTop(
