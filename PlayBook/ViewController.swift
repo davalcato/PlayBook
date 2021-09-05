@@ -32,6 +32,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // Registering cell with identifier
     let cellId = "cellId"
+    let loginCellId = "loginCellId"
     
     // Added Pages
     var pages: [Page] = {
@@ -143,9 +144,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             bottom: view.bottomAnchor,
             right: view.rightAnchor)
         
+        // Register a blank cell for the last page
+        registerCells()
         // Register identifier with collectionView
-        collectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
+//        collectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
     }
+    
+    fileprivate func registerCells() {
+        collectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: loginCellId)
+        
+    }
+    
     // Puts the pageControl dots on screen
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -159,10 +169,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pages.count
+        return pages.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        // Top of method
+        if indexPath.item == pages.count {
+            let loginCell = collectionView.dequeueReusableCell(withReuseIdentifier: loginCellId, for: indexPath)
+            return loginCell
+        }
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PageCell
         
         let page = pages[indexPath.item]
