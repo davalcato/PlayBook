@@ -56,7 +56,7 @@ extension UIView {
         bottomConstant: CGFloat = 0,
         rightConstant: CGFloat = 0,
         widthConstant: CGFloat = 0,
-        heightConstant: CGFloat = 0) -> [NSLayoutConstraint]? {
+        heightConstant: CGFloat = 0) -> [NSLayoutConstraint] {
     
         translatesAutoresizingMaskIntoConstraints = false
         

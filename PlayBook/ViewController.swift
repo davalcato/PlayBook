@@ -95,6 +95,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }()
     
+    // Animate the dots downward with reference
+    var pageControlBottomAnchor: NSLayoutConstraint?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
@@ -103,7 +107,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         view.addSubview(nextButton)
         
         
-        _ = pageControl.anchor(top: nil,
+        pageControlBottomAnchor = pageControl.anchor(top: nil,
             left: view.leftAnchor,
             bottom: view.bottomAnchor,
             right: view.rightAnchor,
@@ -112,7 +116,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             bottomConstant: 0,
             rightConstant: 0,
             widthConstant: 0,
-            heightConstant: 70)
+          // Bracket 1 accesses the second anchor for the dots at bottom
+            heightConstant: 70)[1]
         
         // Skip button
         _ = skipButton.anchor(top: view.topAnchor,
@@ -154,6 +159,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Convert with Int As the user slide the pages
         let pageNumber = Int(targetContentOffset.pointee.x / view.frame.width)
         pageControl.currentPage = pageNumber
+        
+        
+        // animate dots off screen on last page
+        if pageNumber == pages.count {
+            print("animate controls off screen")
+        }
         
     }
     
