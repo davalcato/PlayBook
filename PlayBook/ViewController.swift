@@ -173,7 +173,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             nextButtonTopAnchor?.constant = -40
             
         } else {
+            // Back on regular pages
             pageControlBottomAnchor?.constant = 0
+            skipButtonTopAnchor?.constant = 16
+            nextButtonTopAnchor?.constant = 16
             
         }
         // Animate for both cases from last page
