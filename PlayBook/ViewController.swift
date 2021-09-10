@@ -97,7 +97,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // Animate the dots downward with reference
     var pageControlBottomAnchor: NSLayoutConstraint?
-    
+    // Animate the skipbutton offscreen
+    var skipButtonTopAnchor: NSLayoutConstraint?
+    var nextButtonTopAnchor: NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,8 +121,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
           // Bracket 1 accesses the second anchor for the dots at bottom
             heightConstant: 70)[1]
         
-        // Skip button
-        _ = skipButton.anchor(top: view.topAnchor,
+        // Animate the skipButtonTopAnchor by calling first
+        skipButtonTopAnchor = skipButton.anchor(top: view.topAnchor,
                           left: view.leftAnchor,
                           bottom: nil,
                           right: nil,
@@ -129,9 +131,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                           bottomConstant: 0,
                           rightConstant: 0,
                           widthConstant: 90,
-                          heightConstant: 80)
+                                                heightConstant: 80).first
         
-        _ = nextButton.anchor(top: view.topAnchor,
+        nextButtonTopAnchor = nextButton.anchor(top: view.topAnchor,
                           left: nil,
                           bottom: nil,
                               right: view.rightAnchor,
@@ -140,7 +142,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                           bottomConstant: 0,
                           rightConstant: 0,
                           widthConstant: 90,
-                          heightConstant: 80)
+                                                heightConstant: 80).first
         
         // Use autolayout instead to fix issue of view.frame
         collectionView.anchorToTop(
@@ -166,11 +168,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             print("animate controls off screen")
             // Make the dots animate downward
             pageControlBottomAnchor?.constant = 40
+            // Modifying the skipbutton when on the last page
+            skipButtonTopAnchor?.constant = -40
+            nextButtonTopAnchor?.constant = -40
+            
         } else {
             pageControlBottomAnchor?.constant = 0
             
         }
-        // Animate for both cases from last page 
+        // Animate for both cases from last page
         UIView.animate(withDuration: 0.5,
                        delay: 0,
                        options: .curveEaseOut,
