@@ -165,17 +165,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if pageNumber == pages.count {
             print("animate controls off screen")
             // Make the dots animate downward
-            pageControlBottomAnchor?.constant = -40
-            // Call
-            UIView.animate(withDuration: 0.5,
-                           delay: 0,
-                           options: .curveEaseOut,
-                           animations: {
-                // Method that animates a constraint change with components
-                self.view.layoutIfNeeded()
-                
-            }, completion: nil)
+            pageControlBottomAnchor?.constant = 40
+        } else {
+            pageControlBottomAnchor?.constant = 0
+            
         }
+        // Animate for both cases from last page 
+        UIView.animate(withDuration: 0.5,
+                       delay: 0,
+                       options: .curveEaseOut,
+                       animations: {
+            // Method that animates a constraint change with components
+            self.view.layoutIfNeeded()
+            
+        }, completion: nil)
         
     }
     
