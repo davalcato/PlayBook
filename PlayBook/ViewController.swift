@@ -177,18 +177,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             pageControlBottomAnchor?.constant = 0
             skipButtonTopAnchor?.constant = 16
             nextButtonTopAnchor?.constant = 16
-            
         }
-        // Animate for both cases from last page
-        UIView.animate(withDuration: 0.5,
-                       delay: 0,
-                       options: .curveEaseOut,
-                       animations: {
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseOut,
+            animations: {
             // Method that animates a constraint change with components
             self.view.layoutIfNeeded()
-            
-        }, completion: nil)
-        
+        },
+            completion: nil)
+    
     }
     
     
