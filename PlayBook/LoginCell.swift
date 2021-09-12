@@ -73,20 +73,22 @@ class LoginCell: UICollectionViewCell {
             heightConstant: 50)
     }
     
-    let emailTextField: UITextField = {
-        let textField = UITextField()
+    let emailTextField: LeftPaddedTextField = {
+        let textField = LeftPaddedTextField()
         textField.placeholder = "Enter email"
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 5
         textField.keyboardType = .emailAddress
         return textField
     }()
     
-    let passwordTextField: UITextField = {
-        let textField = UITextField()
+    let passwordTextField: LeftPaddedTextField = {
+        let textField = LeftPaddedTextField()
         textField.placeholder = "Enter password"
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 5
         textField.isSecureTextEntry = true
         return textField
     }()
@@ -102,13 +104,29 @@ class LoginCell: UICollectionViewCell {
         return button
     }()
     
-    
-        
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+// Make space in the textfield
+class LeftPaddedTextField: UITextField {
     
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(
+            x: bounds.origin.x + 10,
+            y: bounds.origin.y,
+            width: bounds.width + 10,
+            height: bounds.height)
+    }
+    
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(
+            x: bounds.origin.x + 10,
+            y: bounds.origin.y,
+            width: bounds.width + 10,
+            height: bounds.height)
+    }
 }
 
 
