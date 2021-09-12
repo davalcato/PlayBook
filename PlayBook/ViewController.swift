@@ -103,6 +103,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        observeKeyBoardNotifications()
+        
         view.addSubview(collectionView)
         view.addSubview(pageControl)
         view.addSubview(skipButton)
@@ -154,6 +157,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Register a blank cell for the last page
         registerCells()
     }
+    
+    // Make keyboard align with textfield
+    fileprivate func observeKeyBoardNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+    }
+    
+    @objc func keyboardShow() {
+        print("keyboard show")
+        
+    }
+    
     // Dismiss the keyboard when user scroll
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         view.endEditing(true)
