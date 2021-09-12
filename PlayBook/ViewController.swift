@@ -153,8 +153,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         // Register a blank cell for the last page
         registerCells()
-        
     }
+    // Dismiss the keyboard when user scroll
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+    
     // Override a method to enable dot page transition
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
