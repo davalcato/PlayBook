@@ -21,6 +21,7 @@ class LoginCell: UICollectionViewCell {
         addSubview(logoImageView)
         addSubview(emailTextField)
         addSubview(passwordTextField)
+        addSubview(loginButton)
         
         _ = logoImageView.anchor(
             top: centerYAnchor,
@@ -58,6 +59,18 @@ class LoginCell: UICollectionViewCell {
             rightConstant: 32,
             widthConstant: 0,
             heightConstant: 50)
+        
+        _ = loginButton.anchor(
+            top: passwordTextField.bottomAnchor,
+            left: leftAnchor,
+            bottom: nil,
+            right: rightAnchor,
+            topConstant: 16,
+            leftConstant: 32,
+            bottomConstant: 0,
+            rightConstant: 32,
+            widthConstant: 0,
+            heightConstant: 50)
     }
     
     let emailTextField: UITextField = {
@@ -76,6 +89,17 @@ class LoginCell: UICollectionViewCell {
         textField.layer.borderWidth = 1
         textField.isSecureTextEntry = true
         return textField
+    }()
+    
+    let loginButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("LOG IN", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .orange
+//        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+        button.layer.cornerRadius = 5
+        return button
     }()
     
     
