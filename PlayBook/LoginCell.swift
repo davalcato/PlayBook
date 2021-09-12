@@ -20,6 +20,7 @@ class LoginCell: UICollectionViewCell {
         
         addSubview(logoImageView)
         addSubview(emailTextField)
+        addSubview(passwordTextField)
         
         _ = logoImageView.anchor(
             top: centerYAnchor,
@@ -45,6 +46,18 @@ class LoginCell: UICollectionViewCell {
             rightConstant: 32,
             widthConstant: 0,
             heightConstant: 50)
+        
+        _ = passwordTextField.anchor(
+            top: emailTextField.bottomAnchor,
+            left: leftAnchor,
+            bottom: nil,
+            right: rightAnchor,
+            topConstant: 16,
+            leftConstant: 32,
+            bottomConstant: 0,
+            rightConstant: 32,
+            widthConstant: 0,
+            heightConstant: 50)
     }
     
     let emailTextField: UITextField = {
@@ -52,8 +65,17 @@ class LoginCell: UICollectionViewCell {
         textField.placeholder = "Enter email"
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 1
+        textField.keyboardType = .emailAddress
         return textField
-        
+    }()
+    
+    let passwordTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Enter password"
+        textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.layer.borderWidth = 1
+        textField.isSecureTextEntry = true
+        return textField
     }()
     
     
