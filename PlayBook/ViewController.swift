@@ -90,9 +90,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             green: 154/255,
             blue: 154/255,
             alpha: 1), for: .normal)
+        // Tap button to move
+        button.addTarget(self, action: #selector(nextpage), for: .touchUpInside)
         return button
-        
     }()
+    
+    @objc func nextpage() {
+        print("next")
+    }
+    
     
     // Animate the dots downward with reference
     var pageControlBottomAnchor: NSLayoutConstraint?
