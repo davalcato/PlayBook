@@ -78,7 +78,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             blue: 154/255,
             alpha: 1), for: .normal)
         return button
-        
     }()
     
     // Add the next button
@@ -167,6 +166,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     @objc func keyboardShow() {
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseOut,
+            animations: {
+            
+            // Change the view frame of keyboard
+            self.view.frame = CGRect(
+                x: 0,
+                y: 33,
+                width: self.view.frame.width,
+                height: self.view.frame.height)
+        },
+            completion: nil)
         print("keyboard show")
         
     }
@@ -213,11 +228,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     }
     
-    
     fileprivate func registerCells() {
         collectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.register(LoginCell.self, forCellWithReuseIdentifier: loginCellId)
-        
     }
     
     // Puts the pageControl dots on screen
@@ -258,14 +271,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 
 }
-
-//extension UIPageViewController {
-//
-//    var scrollView: UIScrollView? {
-//
-//        return view.subviews.filter { $0 is UIScrollView }.first as? UIScrollView
-//    }
-//}
 
 
 
