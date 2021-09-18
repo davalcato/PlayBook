@@ -163,6 +163,33 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                                                selector: #selector(keyboardShow),
                                                name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardHide),
+                                               name: UIResponder.keyboardDidHideNotification,
+                                               object: nil)
+    }
+    
+    @objc func keyboardHide() {
+        // Animate entire frame back
+        
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseOut,
+            animations: {
+            
+            // Change the view frame of keyboard
+            self.view.frame = CGRect(
+                x: 0,
+                y: 0,
+                width: self.view.frame.width,
+                height: self.view.frame.height)
+        },
+            completion: nil)
+        
     }
     
     @objc func keyboardShow() {
@@ -177,13 +204,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             // Change the view frame of keyboard
             self.view.frame = CGRect(
                 x: 0,
-                y: 33,
+                y: -40,
                 width: self.view.frame.width,
                 height: self.view.frame.height)
         },
             completion: nil)
         print("keyboard show")
-        
     }
     
     // Dismiss the keyboard when user scroll
