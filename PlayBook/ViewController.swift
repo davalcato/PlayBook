@@ -81,7 +81,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }()
     
     // Add the next button
-    let nextButton: UIButton = {
+    lazy var nextButton: UIButton = {
         let button = UIButton(type: .system)
         // Display button
         button.setTitle("Next", for: .normal)
@@ -91,12 +91,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             blue: 154/255,
             alpha: 1), for: .normal)
         // Tap button to move
-        button.addTarget(self, action: #selector(nextpage), for: .touchUpInside)
+        button.addTarget(self, action: #selector(nextPage), for: .touchUpInside)
         return button
     }()
     
-    @objc func nextpage() {
-        print("next")
+    @objc func nextPage() {
+        // item used for collectionviews rolls for tableviews
+        let indexPath = IndexPath(item: pageControl.currentPage + 1, section: 0)
+        collectionView.scrollToItem(
+            at: indexPath,
+            at: .centeredHorizontally,
+            animated: true)        
     }
     
     
@@ -216,6 +221,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         },
             completion: nil)
         print("keyboard show")
+    }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        let indexPath = IndexPath(item: pageControl.currentPage + 1, section: 0)
     }
     
     // Dismiss the keyboard when user scroll
