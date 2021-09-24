@@ -96,12 +96,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }()
     
     @objc func nextPage() {
+        // Fix scrolling out of the last page
+        if pageControl.currentPage == pages.count {
+            
+            return
+        }
+        
         // item used for collectionviews rolls for tableviews
         let indexPath = IndexPath(item: pageControl.currentPage + 1, section: 0)
         collectionView.scrollToItem(
             at: indexPath,
             at: .centeredHorizontally,
-            animated: true)        
+            animated: true)
+        pageControl.currentPage += 1
     }
     
     
@@ -222,10 +229,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             completion: nil)
         print("keyboard show")
     }
-    
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        let indexPath = IndexPath(item: pageControl.currentPage + 1, section: 0)
-    }
+//    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView){
+//        //Test the offset and calculate the current page after scrolling ends
+//        let pageWidth:CGFloat = scrollView.frame.width
+//        let currentPage:CGFloat = floor((scrollView.contentOffset.x-pageWidth/2)/pageWidth)+1
+//        //Change the indicator
+//        self.pageControl.currentPage = Int(currentPage);
+//    }
     
     // Dismiss the keyboard when user scroll
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -269,6 +279,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     }
     
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+       let visibleRect = CGRect(origin: self.collectionView.contentOffset, size: self.collectionView.bounds.size)
+       let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+       if let visibleIndexPath = self.collectionView.indexPathForItem(at: visiblePoint) {
+                self.pageControl.currentPage = visibleIndexPath.row
+       }
+    }
+    
     fileprivate func registerCells() {
         collectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.register(LoginCell.self, forCellWithReuseIdentifier: loginCellId)
@@ -310,8 +328,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: view.frame.height)
     }
-
 }
+
+
+
+
 
 
 
