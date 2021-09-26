@@ -68,7 +68,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }()
     
     // Add the skip button
-    let skipButton: UIButton = {
+    lazy var skipButton: UIButton = {
         let button = UIButton(type: .system)
         // Display button
         button.setTitle("Skip", for: .normal)
@@ -77,8 +77,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             green: 154/255,
             blue: 154/255,
             alpha: 1), for: .normal)
+        // Add target
+        button.addTarget(self, action: #selector(skip), for: .touchUpInside)
         return button
     }()
+    
+    @objc func skip() {
+        pageControl.currentPage = pages.count - 1
+        nextPage()
+    }
     
     // Add the next button
     lazy var nextButton: UIButton = {
