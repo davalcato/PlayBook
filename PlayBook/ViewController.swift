@@ -100,6 +100,29 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if pageControl.currentPage == pages.count {
             return
         }
+        // When on the second to last page enable scroll over for next button
+        if pageControl.currentPage == pages.count - 1 {
+            print("move controls off screen")
+            pageControlBottomAnchor?.constant = 40
+            // Modifying the skipbutton when on the last page
+            skipButtonTopAnchor?.constant = -40
+            nextButtonTopAnchor?.constant = -40
+           
+            // Enable animation of skip and next button 
+            UIView.animate(
+                withDuration: 0.5,
+                delay: 0,
+                usingSpringWithDamping: 1,
+                initialSpringVelocity: 1,
+                options: .curveEaseOut,
+                animations: {
+                // Method that animates a constraint change with components
+                self.view.layoutIfNeeded()
+            },
+                completion: nil)
+            
+        }
+        
         let indexPath = IndexPath(item: pageControl.currentPage + 1, section: 0)
         self.collectionView.isPagingEnabled = false
         self.collectionView.scrollToItem(at: indexPath, at: .left, animated: false)
@@ -261,6 +284,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             skipButtonTopAnchor?.constant = 16
             nextButtonTopAnchor?.constant = 16
         }
+        // Enable animation of the next & skip button
         UIView.animate(
             withDuration: 0.5,
             delay: 0,
