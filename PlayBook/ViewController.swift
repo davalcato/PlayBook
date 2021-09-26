@@ -102,13 +102,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         // When on the second to last page enable scroll over for next button
         if pageControl.currentPage == pages.count - 1 {
-            print("move controls off screen")
-            pageControlBottomAnchor?.constant = 40
-            // Modifying the skipbutton when on the last page
-            skipButtonTopAnchor?.constant = -40
-            nextButtonTopAnchor?.constant = -40
+            moveControlConstraintsOffScreen()
            
-            // Enable animation of skip and next button 
+            // Enable animation of skip and next button
             UIView.animate(
                 withDuration: 0.5,
                 delay: 0,
@@ -271,13 +267,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         // animate dots off screen on last page
         if pageNumber == pages.count {
-            print("animate controls off screen")
-            // Make the dots animate downward
-            pageControlBottomAnchor?.constant = 40
-            // Modifying the skipbutton when on the last page
-            skipButtonTopAnchor?.constant = -40
-            nextButtonTopAnchor?.constant = -40
-            
+           // Call function
+            moveControlConstraintsOffScreen()
         } else {
             // Back on regular pages
             pageControlBottomAnchor?.constant = 0
@@ -296,16 +287,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             self.view.layoutIfNeeded()
         },
             completion: nil)
-    
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-       let visibleRect = CGRect(origin: self.collectionView.contentOffset, size: self.collectionView.bounds.size)
-       let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
-       if let visibleIndexPath = self.collectionView.indexPathForItem(at: visiblePoint) {
-                self.pageControl.currentPage = visibleIndexPath.row
-       }
+    // Refactor code to animate skip and next butoon with new method
+    fileprivate func moveControlConstraintsOffScreen() {
+        // Make the dots animate downward
+        pageControlBottomAnchor?.constant = 40
+        // Modifying the skipbutton when on the last page
+        skipButtonTopAnchor?.constant = -40
+        nextButtonTopAnchor?.constant = -40
+        
     }
+   
     
     fileprivate func registerCells() {
         collectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
