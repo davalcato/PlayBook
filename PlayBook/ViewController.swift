@@ -98,19 +98,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @objc func nextPage() {
         // Fix scrolling out of the last page
         if pageControl.currentPage == pages.count {
-            
             return
         }
-        
-        // item used for collectionviews rolls for tableviews
         let indexPath = IndexPath(item: pageControl.currentPage + 1, section: 0)
-        collectionView.scrollToItem(
-            at: indexPath,
-            at: .centeredHorizontally,
-            animated: true)
+        self.collectionView.isPagingEnabled = false
+        self.collectionView.scrollToItem(at: indexPath, at: .left, animated: false)
+        self.collectionView.isPagingEnabled = true
         pageControl.currentPage += 1
+        
+        // This method is broken on iOS 15
+//        let indexPath = IndexPath(item: pageControl.currentPage + 1, section: 0)
+//        collectionView.scrollToItem(
+//            at: indexPath,
+//            at: .centeredHorizontally,
+//            animated: true)
+        
     }
-    
     
     // Animate the dots downward with reference
     var pageControlBottomAnchor: NSLayoutConstraint?
@@ -151,18 +154,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                           bottomConstant: 0,
                           rightConstant: 0,
                           widthConstant: 90,
-                                                heightConstant: 80).first
+                          heightConstant: 80).first
         
         nextButtonTopAnchor = nextButton.anchor(top: view.topAnchor,
                           left: nil,
                           bottom: nil,
-                              right: view.rightAnchor,
+                          right: view.rightAnchor,
                           topConstant: 26,
                           leftConstant: 0,
                           bottomConstant: 0,
                           rightConstant: 0,
                           widthConstant: 90,
-                                                heightConstant: 80).first
+                          heightConstant: 80).first
         
         // Use autolayout instead to fix issue of view.frame
         collectionView.anchorToTop(
@@ -229,13 +232,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             completion: nil)
         print("keyboard show")
     }
-//    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView){
-//        //Test the offset and calculate the current page after scrolling ends
-//        let pageWidth:CGFloat = scrollView.frame.width
-//        let currentPage:CGFloat = floor((scrollView.contentOffset.x-pageWidth/2)/pageWidth)+1
-//        //Change the indicator
-//        self.pageControl.currentPage = Int(currentPage);
-//    }
     
     // Dismiss the keyboard when user scroll
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
