@@ -354,6 +354,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         // Relayout the entire view
         collectionView.collectionViewLayout.invalidateLayout()
+        // Center the view in Landscape
+        let indexPath = IndexPath(item: pageControl.currentPage, section: 0)
+        // Scroll to indexPath after rotation is going
+        DispatchQueue.main.async {
+            self.collectionView.isPagingEnabled = false
+            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+            self.collectionView.isPagingEnabled = true
+        }
     }
 }
 
