@@ -18,18 +18,24 @@ class MainNavigationController: UINavigationController {
         if isLoggedIn {
             // if user is logged in
         } else {
-            let loginController = LoginController()
-            // present controller
-            present(loginController,
-                    animated: true,
-                    completion: {
-                // will do something here later
-                
-            })
-            
+            perform(#selector(showLoginController),
+                    with: nil,
+                    afterDelay: 0.01)
         }
     }
+    // fix error for not in the window hierarchy
+    @objc func showLoginController() {
+        let loginController = LoginController()
+        // present controller
+        present(loginController,
+                animated: true,
+                completion: {
+            // will do something here later
+        })
+        
+    }
 }
+
 
 
 
