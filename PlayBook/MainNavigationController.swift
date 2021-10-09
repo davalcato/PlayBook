@@ -11,6 +11,23 @@ class MainNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
+        
+        // loging here
+        let isLoggedIn = false
+        // if loggedIn do something
+        if isLoggedIn {
+            // if user is logged in
+        } else {
+            let loginController = LoginController()
+            // present controller
+            present(loginController,
+                    animated: true,
+                    completion: {
+                // will do something here later
+                
+            })
+            
+        }
     }
 }
 
