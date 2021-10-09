@@ -7,12 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class LoginController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     // Lazy var to access self within closure block
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        
         // scroll direction
         layout.scrollDirection = .horizontal
         // layout line spacing 
@@ -20,7 +19,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let cv = UICollectionView(
         frame: .zero,
         collectionViewLayout: layout)
-       
         cv.backgroundColor = .white
         // Datasource from collectionView
         cv.dataSource = self
@@ -238,7 +236,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             completion: nil)
         
     }
-    
+    // Everytime keyboard shows itself
     @objc func keyboardShow() {
         UIView.animate(
             withDuration: 0.5,
@@ -249,7 +247,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             animations: {
             
             
-            let y: CGFloat = UIDevice.current.orientation.isLandscape ? -100 : -10
+            let y: CGFloat = UIDevice.current.orientation.isLandscape ? -10 : -50
             
             // Change the view frame of keyboard
             self.view.frame = CGRect(
@@ -368,6 +366,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
 }
+
 
 
 
