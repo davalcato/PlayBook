@@ -12,17 +12,25 @@ class MainNavigationController: UINavigationController {
         super.viewDidLoad()
         view.backgroundColor = .red
         
-        // loging here
-        let isLoggedIn = false
         // if loggedIn do something
-        if isLoggedIn {
+        if isLoggedIn() {
             // if user is logged in
+            let homeController = HomeController()
+            viewControllers = [homeController]
         } else {
             perform(#selector(showLoginController),
                     with: nil,
                     afterDelay: 0.01)
         }
     }
+    // transport isLoggedIn into a func
+    fileprivate func isLoggedIn() -> Bool {
+        return true
+        
+    }
+    
+    
+    
     // fix error for not in the window hierarchy
     @objc func showLoginController() {
         let loginController = LoginController()
@@ -32,7 +40,12 @@ class MainNavigationController: UINavigationController {
                 completion: {
             // will do something here later
         })
-        
+    }
+}
+class HomeController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .yellow
     }
 }
 
