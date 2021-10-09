@@ -10,7 +10,7 @@ import UIKit
 class MainNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view.backgroundColor = .white
         
         // if loggedIn do something
         if isLoggedIn() {
@@ -25,11 +25,9 @@ class MainNavigationController: UINavigationController {
     }
     // transport isLoggedIn into a func
     fileprivate func isLoggedIn() -> Bool {
-        return true
+        return false
         
     }
-    
-    
     
     // fix error for not in the window hierarchy
     @objc func showLoginController() {
