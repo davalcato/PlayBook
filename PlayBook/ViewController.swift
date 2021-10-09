@@ -248,10 +248,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             options: .curveEaseOut,
             animations: {
             
+            
+            let y: CGFloat = UIDevice.current.orientation.isLandscape ? -100 : -10
+            
             // Change the view frame of keyboard
             self.view.frame = CGRect(
                 x: 0,
-                y: -40,
+                y: y,
                 width: self.view.frame.width,
                 height: self.view.frame.height)
         },
@@ -330,12 +333,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        // Top of method
+        // This method is called by reload
         if indexPath.item == pages.count {
             let loginCell = collectionView.dequeueReusableCell(withReuseIdentifier: loginCellId, for: indexPath)
             return loginCell
         }
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PageCell
         
         let page = pages[indexPath.item]
@@ -359,8 +361,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Scroll to indexPath after rotation is going
         DispatchQueue.main.async {
             self.collectionView.isPagingEnabled = false
-            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             self.collectionView.isPagingEnabled = true
+            // smaller images in landscape or redraw all cells
+            self.collectionView.reloadData()
         }
     }
 }

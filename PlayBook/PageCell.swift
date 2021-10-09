@@ -17,8 +17,13 @@ class PageCell: UICollectionViewCell {
             guard let page = page else {
                 return
             }
+            // Landscape images
+            var imageName = page.imageName
+            if UIDevice.current.orientation.isLandscape {
+                imageName += "_landscape"
+            }
             //Access the page here
-            imageView.image = UIImage(named: page.imageName)
+            imageView.image = UIImage(named: imageName)
             
             // Change color text
             let color = UIColor(white: 0.2, alpha: 1)
@@ -118,6 +123,7 @@ class PageCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 
 

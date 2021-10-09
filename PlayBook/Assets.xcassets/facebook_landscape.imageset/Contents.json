@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "page2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "facebook_landscape.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
