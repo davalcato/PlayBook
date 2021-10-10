@@ -104,16 +104,11 @@ class LoginCell: UICollectionViewCell {
         button.layer.cornerRadius = 5
         return button
     }()
-    
-    // loginController instance
-//    var loginController: LoginController?
-    
     // specific a delegate
-    var delegate: LoginControllerDelegate?
+    weak var delegate: LoginControllerDelegate?
     
     
     @objc func handleLogin() {
-//        loginController?.finishLoggingIn()
         delegate?.finishLoggingIn()
     }
     

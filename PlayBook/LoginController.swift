@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol LoginControllerDelegate {
+protocol LoginControllerDelegate: class {
     func finishLoggingIn()
     
 }
@@ -340,9 +340,6 @@ class LoginController: UIViewController, UICollectionViewDelegate, UICollectionV
         if indexPath.item == pages.count {
             let loginCell = collectionView.dequeueReusableCell(withReuseIdentifier: loginCellId, for: indexPath) as!
             LoginCell
-            // Property called loginController producing the print statement
-//            loginCell.loginController = self
-            
             loginCell.delegate = self
             
             return loginCell
