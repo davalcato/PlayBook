@@ -93,16 +93,24 @@ class LoginCell: UICollectionViewCell {
         return textField
     }()
     
-    let loginButton: UIButton = {
+    lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("LOG IN", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         button.backgroundColor = .orange
 //        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         button.layer.cornerRadius = 5
         return button
     }()
+    
+    // loginController instance
+    var loginController: LoginController?
+    
+    @objc func handleLogin() {
+        loginController?.finishLoggingIn()
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

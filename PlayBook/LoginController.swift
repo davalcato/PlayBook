@@ -331,9 +331,13 @@ class LoginController: UIViewController, UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        // This method is called by reload
+        // This method is called by reload - rendering our last login cell
         if indexPath.item == pages.count {
-            let loginCell = collectionView.dequeueReusableCell(withReuseIdentifier: loginCellId, for: indexPath)
+            let loginCell = collectionView.dequeueReusableCell(withReuseIdentifier: loginCellId, for: indexPath) as!
+            LoginCell
+            // Property called loginController producing the print statement 
+            loginCell.loginController = self
+            
             return loginCell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PageCell
@@ -342,6 +346,11 @@ class LoginController: UIViewController, UICollectionViewDelegate, UICollectionV
         cell.page = page
         
         return cell
+    }
+    // function
+    func finishLoggingIn() {
+        print("Finish logging in from LoginController")
+        
     }
     
     // Make cell blocks bigger
