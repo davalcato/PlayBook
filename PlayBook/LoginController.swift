@@ -7,7 +7,12 @@
 
 import UIKit
 
-class LoginController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+protocol LoginControllerDelegate {
+    func finishLoggingIn()
+    
+}
+
+class LoginController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, LoginControllerDelegate {
     
     // Lazy var to access self within closure block
     lazy var collectionView: UICollectionView = {
@@ -336,7 +341,9 @@ class LoginController: UIViewController, UICollectionViewDelegate, UICollectionV
             let loginCell = collectionView.dequeueReusableCell(withReuseIdentifier: loginCellId, for: indexPath) as!
             LoginCell
             // Property called loginController producing the print statement
-            loginCell.loginController = self
+//            loginCell.loginController = self
+            
+            loginCell.delegate = self
             
             return loginCell
         }
@@ -349,7 +356,10 @@ class LoginController: UIViewController, UICollectionViewDelegate, UICollectionV
     }
     // function
     func finishLoggingIn() {
-        // Completion block of nil 
+        
+        // implement the home controller here 
+        
+        // Completion block of nil
         dismiss(animated: true, completion: nil)
         
     }

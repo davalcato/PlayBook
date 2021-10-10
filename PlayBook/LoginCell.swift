@@ -106,10 +106,15 @@ class LoginCell: UICollectionViewCell {
     }()
     
     // loginController instance
-    var loginController: LoginController?
+//    var loginController: LoginController?
+    
+    // specific a delegate
+    var delegate: LoginControllerDelegate?
+    
     
     @objc func handleLogin() {
-        loginController?.finishLoggingIn()
+//        loginController?.finishLoggingIn()
+        delegate?.finishLoggingIn()
     }
     
     required init?(coder: NSCoder) {
