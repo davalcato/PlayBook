@@ -25,7 +25,7 @@ class MainNavigationController: UINavigationController {
     }
     // transport isLoggedIn into a func
     fileprivate func isLoggedIn() -> Bool {
-        return false
+        return true
         
     }
     
@@ -43,7 +43,23 @@ class MainNavigationController: UINavigationController {
 class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .yellow
+        
+        // title
+        navigationItem.title = "We're logged in"
+        
+        let imageView = UIImageView(image: UIImage(named: "home"))
+        view.addSubview(imageView)
+        _ = imageView.anchor(
+            top: view.topAnchor,
+            left: view.leftAnchor,
+            bottom: view.bottomAnchor,
+            right: view.rightAnchor,
+            topConstant: 64,
+            leftConstant: 0,
+            bottomConstant: 0,
+            rightConstant: 0,
+            widthConstant: 0,
+            heightConstant: 0)
     }
 }
 
