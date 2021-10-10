@@ -25,7 +25,7 @@ class MainNavigationController: UINavigationController {
     }
     // transport isLoggedIn into a func
     fileprivate func isLoggedIn() -> Bool {
-        return true
+        return false
         
     }
     
