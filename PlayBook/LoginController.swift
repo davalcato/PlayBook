@@ -335,7 +335,7 @@ class LoginController: UIViewController, UICollectionViewDelegate, UICollectionV
         if indexPath.item == pages.count {
             let loginCell = collectionView.dequeueReusableCell(withReuseIdentifier: loginCellId, for: indexPath) as!
             LoginCell
-            // Property called loginController producing the print statement 
+            // Property called loginController producing the print statement
             loginCell.loginController = self
             
             return loginCell
@@ -349,7 +349,8 @@ class LoginController: UIViewController, UICollectionViewDelegate, UICollectionV
     }
     // function
     func finishLoggingIn() {
-        print("Finish logging in from LoginController")
+        // Completion block of nil 
+        dismiss(animated: true, completion: nil)
         
     }
     
