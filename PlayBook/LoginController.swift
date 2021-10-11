@@ -353,9 +353,13 @@ class LoginController: UIViewController, UICollectionViewDelegate, UICollectionV
     }
     // function
     func finishLoggingIn() {
-        
-        // implement the home controller here 
-        
+        // access main root keyword of app here
+        let rootViewController = UIApplication.shared.keyWindow?.rootViewController
+        // Cast it down with guard statement
+        guard let mainNavigationController = rootViewController as?
+                MainNavigationController else { return }
+        // array of controllers
+        mainNavigationController.viewControllers = [HomeController()]
         // Completion block of nil
         dismiss(animated: true, completion: nil)
         
