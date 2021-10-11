@@ -25,10 +25,11 @@ class MainNavigationController: UINavigationController {
     }
     // transport isLoggedIn into a func
     fileprivate func isLoggedIn() -> Bool {
+        // true logic of user signIn
+        
         return false
         
     }
-    
     // fix error for not in the window hierarchy
     @objc func showLoginController() {
         let loginController = LoginController()
@@ -46,7 +47,7 @@ class HomeController: UIViewController {
         
         // title
         navigationItem.title = "We're logged in"
-        
+        // Fake home page 
         let imageView = UIImageView(image: UIImage(named: "home"))
         view.addSubview(imageView)
         _ = imageView.anchor(

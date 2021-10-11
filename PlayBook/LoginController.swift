@@ -355,14 +355,19 @@ class LoginController: UIViewController, UICollectionViewDelegate, UICollectionV
     func finishLoggingIn() {
         // access main root keyword of app here
         let rootViewController = UIApplication.shared.keyWindow?.rootViewController
-        // Cast it down with guard statement
+        // Cast it down with guard statement if true 
         guard let mainNavigationController = rootViewController as?
                 MainNavigationController else { return }
         // array of controllers
         mainNavigationController.viewControllers = [HomeController()]
+        
+        // keep user loggedIn
+        UserDefaults.standard.set(true, forKey: "isLoggedIn")
+        // call method after setting value to save to device 
+        UserDefaults.standard.synchronize()
+        
         // Completion block of nil
         dismiss(animated: true, completion: nil)
-        
     }
     
     // Make cell blocks bigger
