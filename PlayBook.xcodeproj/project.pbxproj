@@ -19,6 +19,7 @@
 		75739D5E26D07B2400A2AF27 /* PlayBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75739D5D26D07B2400A2AF27 /* PlayBookTests.swift */; };
 		75739D6826D07B2400A2AF27 /* PlayBookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75739D6726D07B2400A2AF27 /* PlayBookUITests.swift */; };
 		75B3896C26EC239800D9AFE2 /* LoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B3896B26EC239800D9AFE2 /* LoginCell.swift */; };
+		75BBB0B92715076300A360CD /* HomeController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BBB0B82715076300A360CD /* HomeController .swift */; };
 		75E63A0527122C7100965ABF /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E63A0427122C7100965ABF /* MainNavigationController.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		75739D6326D07B2400A2AF27 /* PlayBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlayBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75739D6726D07B2400A2AF27 /* PlayBookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBookUITests.swift; sourceTree = "<group>"; };
 		75B3896B26EC239800D9AFE2 /* LoginCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCell.swift; sourceTree = "<group>"; };
+		75BBB0B82715076300A360CD /* HomeController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController .swift"; sourceTree = "<group>"; };
 		75E63A0427122C7100965ABF /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +111,7 @@
 			children = (
 				75739D4626D07B1E00A2AF27 /* AppDelegate.swift */,
 				75E63A0427122C7100965ABF /* MainNavigationController.swift */,
+				75BBB0B82715076300A360CD /* HomeController .swift */,
 				75739D4826D07B1E00A2AF27 /* SceneDelegate.swift */,
 				75739D4A26D07B1E00A2AF27 /* LoginController.swift */,
 				75287B0A26DC211F00550B86 /* Extensions.swift */,
@@ -277,6 +280,7 @@
 				75739D4726D07B1E00A2AF27 /* AppDelegate.swift in Sources */,
 				75448DEC26D19FBD00E6D67F /* PageCell.swift in Sources */,
 				75739D4926D07B1E00A2AF27 /* SceneDelegate.swift in Sources */,
+				75BBB0B92715076300A360CD /* HomeController .swift in Sources */,
 				75448DEE26D2DCFF00E6D67F /* Page.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
