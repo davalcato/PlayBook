@@ -25,8 +25,9 @@ class MainNavigationController: UINavigationController {
     }
     // transport isLoggedIn into a func
     fileprivate func isLoggedIn() -> Bool {
+        return UserDefaults.standard.isLoggedIn()
         // true logic or value of user signed In 
-        return UserDefaults.standard.bool(forKey: "isLoggedIn")
+//        return UserDefaults.standard.bool(forKey: "isLoggedIn")
     }
     // fix error for not in the window hierarchy
     @objc func showLoginController() {
