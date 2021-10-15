@@ -39,9 +39,12 @@ class HomeController: UIViewController {
     
     // handleSignOut button
     @objc func handleSignOut() {
-        UserDefaults.standard.set(false, forKey: "isLoggedIn")
-        // call synchronized by setting new value
-        UserDefaults.standard.synchronize()
+        // replace below code
+        UserDefaults.standard.setIsLoggedIn(value: false)
+        
+//        UserDefaults.standard.set(false, forKey: "isLoggedIn")
+//        // call synchronized by setting new value
+//        UserDefaults.standard.synchronize()
         
         // present the login mode 
         let loginController = LoginController()

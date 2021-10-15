@@ -360,10 +360,13 @@ class LoginController: UIViewController, UICollectionViewDelegate, UICollectionV
                 MainNavigationController else { return }
         // array of controllers
         mainNavigationController.viewControllers = [HomeController()]
-        // keep user loggedIn
-        UserDefaults.standard.set(true, forKey: "isLoggedIn")
-        // call method after setting value to save to device 
-        UserDefaults.standard.synchronize()
+        
+//        // keep user loggedIn
+//        UserDefaults.standard.set(true, forKey: "isLoggedIn")
+//        // call method after setting value to save to device
+//        UserDefaults.standard.synchronize()
+        
+        UserDefaults.standard.setIsLoggedIn(value: true)
         
         // Completion block of nil
         dismiss(animated: true, completion: nil)
