@@ -26,6 +26,7 @@ class MainNavigationController: UINavigationController {
     // transport isLoggedIn into a func
     fileprivate func isLoggedIn() -> Bool {
         return UserDefaults.standard.isLoggedIn()
+        
         // true logic or value of user signed In 
 //        return UserDefaults.standard.bool(forKey: "isLoggedIn")
     }
